@@ -5,10 +5,12 @@ import Phaser from 'phaser';
 
 // scenes
 import Preload from './scenes/Preload';
+import Game from './scenes/Game';
+import GameOver from './scenes/GameOver';
 
 new Phaser.Game({
   //SCENES
-  scene: [Preload],
+  scene: [Preload, Game, GameOver],
 
   //PLUGINS
   plugins: {
