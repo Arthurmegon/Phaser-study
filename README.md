@@ -1,3 +1,3 @@
 # Phaser-study
 
-Small projects to study Phaser 3 and Type/JavaScript
+Pequenos projetos para estudar Phaser 3 e TypeScript
