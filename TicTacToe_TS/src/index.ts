@@ -7,10 +7,11 @@ import 'phaser/plugins/spine/dist/SpinePlugin'
 // scenes
 import Preload from './scenes/Preload';
 import PlayGame from './scenes/PlayGame';
+import Restart from './scenes/Restart';
 
 new Phaser.Game({
   //SCENES
-  scene: [Preload, PlayGame],
+  scene: [Preload, PlayGame, Restart],
   //PLUGINS
   plugins: {
     scene: [
