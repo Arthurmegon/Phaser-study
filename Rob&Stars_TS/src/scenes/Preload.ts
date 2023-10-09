@@ -4,6 +4,14 @@ import phaser from '../utils/phaser';
 export default class Preload extends Phaser.Scene {
   public x: number = 0;
   public y: number = 0;
+  public player!: Phaser.Physics.Arcade.Sprite;
+  public stars!: Phaser.Physics.Arcade.Group;
+  public bombs!: Phaser.Physics.Arcade.Group;
+  public platforms!: Phaser.Physics.Arcade.StaticGroup;
+  public cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
+  public score = 0;
+  public gameOver = false;
+  public scoreText!: Phaser.GameObjects.Text;
 
   constructor() { 
     super('Preload'); 
@@ -20,7 +28,7 @@ export default class Preload extends Phaser.Scene {
     this.load.image('ground', 'images/platform.png');
     this.load.image('star', 'images/star.png');
     this.load.image('bomb', 'images/bomb.png');
-    this.load.image('button', 'images/button.png');
+    this.load.image('button', 'images/button.png',);
 
     //SPRITES
     this.load.spritesheet('dude', 

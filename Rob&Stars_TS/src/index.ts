@@ -22,8 +22,8 @@ new Phaser.Game({
   parent: 'db739594-062e-4b43-b0b5-3d3e3d17846e',
   backgroundColor: '#222',
   scale: {
-    width: 800,
-    height: 600,
+    width: 1920,
+    height: 1080,
     mode: Phaser.Scale.FIT,
     autoCenter: Phaser.Scale.CENTER_BOTH
   },

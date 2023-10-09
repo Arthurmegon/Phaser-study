@@ -19,18 +19,18 @@ export default class Game extends Phaser.Scene {
 
   create() {
     // BACKGROUND
-    this.add.image(400, 300, 'sky');
+    this.add.image(960, 540, 'sky').setScale(2.5, 2);
 
     // PLATFORMS GROUP
     this.platforms = this.physics.add.staticGroup();
 
-    this.platforms.create(400, 568, 'ground').setScale(2).refreshBody();
-    this.platforms.create(600, 400, 'ground');
-    this.platforms.create(50, 250, 'ground');
-    this.platforms.create(750, 220, 'ground');
+    this.platforms.create(960, 1030, 'ground').setScale(5).refreshBody();
+    this.platforms.create(300, 750, 'ground').setScale(2).refreshBody();
+    this.platforms.create(50, 520, 'ground').setScale(2).refreshBody();
+    this.platforms.create(1550, 550, 'ground').setScale(2).refreshBody();
 
     // PLAYER GROUP
-    this.player = this.physics.add.sprite(100, 450, 'dude') as Phaser.Physics.Arcade.Sprite;
+    this.player = this.physics.add.sprite(960, 850, 'dude').setScale(2) as Phaser.Physics.Arcade.Sprite;
     this.player.setBounce(0.2);
     this.player.setCollideWorldBounds(true);
 
@@ -59,26 +59,27 @@ export default class Game extends Phaser.Scene {
     if (this.input.keyboard) {
       this.cursors = this.input.keyboard.createCursorKeys();
     }
+    
+    // SCORE TEXT
+    this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '80px', color: '#1f045e', fontFamily: 'monospace', });
 
     // STARS GROUP
     this.stars = this.physics.add.group({
       key: 'star',
       repeat: 4,
-      setXY: {x: 100, y: 0, stepX: 150}
+      setXY: {x: 100, y: 0, stepX: 400},
     });
 
     // STARS BOUNCE
     this.stars.children.iterate((child) => {
       const childImage = child as Phaser.Physics.Arcade.Image;
       childImage.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+      childImage.setScale(2, 2);
       return true;
     });
 
     // BOMBS GROUP
     this.bombs = this.physics.add.group();
-
-    // SCORE TEXT
-    this.scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '40px', color: '#1f045e', fontFamily: 'monospace', });
 
     // PLATFORMS COLLIDERS
     this.physics.add.collider(this.player, this.platforms);
@@ -105,10 +106,10 @@ export default class Game extends Phaser.Scene {
 
     // INPUTS PULO E DESCIDA
     if (this.cursors?.up?.isDown && this.player.body?.touching.down) {
-      this.player.setVelocityY(-330);
+      this.player.setVelocityY(-490);
     }
     else if (this.cursors?.down?.isDown && !this.player.body?.touching.down) {
-      this.player.setVelocityY(330);
+      this.player.setVelocityY(490);
     }
   }
 
@@ -132,6 +133,7 @@ export default class Game extends Phaser.Scene {
 
       // SPAWN BOMB 
       const bomb = this.bombs.create(x, 16, 'bomb') as Phaser.Physics.Arcade.Image;
+      bomb.setScale(2, 2);
       bomb.setBounce(1);
       bomb.setCollideWorldBounds(true);
       bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
@@ -145,7 +147,7 @@ export default class Game extends Phaser.Scene {
     this.player.setTint(0xff0000);
     this.player.anims.play('turn');
     this.scene.launch('GameOver', {fadeOut: true});
-    player.disableBody(true, false);
     this.score = 0;
+    player.disableBody(true, false);
   }
 }
