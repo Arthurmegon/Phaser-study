@@ -1,0 +1,36 @@
+.score
+{
+    color: #1f045e;
+    font-size: 32px;
+}
+
+body{
+    background-color: black;
+}
+
+.jogo{
+    display: grid;
+    grid-template-columns: 30px 30px 30px;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.quadrado, button{
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border: 1px solid aliceblue;
+}
+
+button{
+    width: 30px;
+    height: 30px;
+    background-color: black;
+    border: 0px;
+    color: aliceblue;
+}
+
+h1{
+    color: aliceblue;
+    text-align: center;
+}
