@@ -145,6 +145,7 @@ export default class Game extends Phaser.Scene {
     this.player.setTint(0xff0000);
     this.player.anims.play('turn');
     this.scene.launch('GameOver', {fadeOut: true});
+    player.disableBody(true, false);
     this.score = 0;
   }
 }
