@@ -2,11 +2,11 @@ var list1 = ["teste", "entao", "alt", "ato"];
 var letters1 = ["T", "E", "S", "T", "E", "N", "T", "A", "O", "L", "T", "A", "O"];
 
 function submit1(){
-  var acerto = document.getElementById('acerto');
-  var error = document.getElementById('error');
-  var acertou = false;
-  acerto.innerHTML = "";
-  error.innerHTML = "";
+  var correct = document.getElementById('correct');
+  var wrong = document.getElementById('wrong');
+  var isCorrect = false;
+  correct.innerHTML = "";
+  wrong.innerHTML = "";
 
   var enterWord = input1.value;
   if (enterWord == list1[0]) {
@@ -39,15 +39,15 @@ function submit1(){
                         
   for (var i = 0; i < list1.length; i++) {
       if (enterWord == list1[i]) {
-          acertou = true;
-          break; 
+        isCorrect = true;
+        break; 
       }
   }
-  if (acertou) {
-      acerto.innerHTML = "Acertou :)";
-      input1.value = "";
+  if (isCorrect) {
+    correct.innerHTML = "Acertou :)";
+    input1.value = "";
   } else {
-      error.innerHTML = "Errou :(";
-      input1.value = "";
+    wrong.innerHTML = "Errou :(";
+    input1.value = "";
   }
 }
